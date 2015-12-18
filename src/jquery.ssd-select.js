@@ -57,6 +57,20 @@
 
         }
 
+        function callReload(obj) {
+
+            "use strict";
+
+            call(
+                obj.val(),
+                function() {
+                    window.location.reload(true);
+                },
+                error
+            )
+
+        }
+
         function callReplace(obj) {
 
             "use strict";
@@ -99,20 +113,6 @@
 
                     });
 
-                },
-                error
-            )
-
-        }
-
-        function callReload(obj) {
-
-            "use strict";
-
-            call(
-                obj.val(),
-                function() {
-                    window.location.reload(true);
                 },
                 error
             )
