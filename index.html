@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ssd-select by sebastiansulinski</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Ssd-select</h1>
+      <h2 class="project-tagline">jQuery plugin to handle most common events associated with the form &#39;select&#39; tag.</h2>
+      <a href="https://github.com/sebastiansulinski/ssd-select" class="btn">View on GitHub</a>
+      <a href="https://github.com/sebastiansulinski/ssd-select/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/sebastiansulinski/ssd-select/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="ssd-select" class="anchor" href="#ssd-select" aria-hidden="true"><span class="octicon octicon-link"></span></a>SSD Select</h1>
+
+<p>jQuery plugin to handle most common events associated with the form 'select' tag.</p>
+
+<h2>
+<a id="usage-instructions" class="anchor" href="#usage-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage instructions</h2>
+
+<p>First include all resources and call the plugin</p>
+
+<pre><code>&lt;script src="./node_modules/jquery/dist/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="./node_modules/ssd-select/src/jquery.ssd-select.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    $.fn.ssdSelect({
+        selector : '[data-ssd-select]',
+        type_attribute : 'data-ssd-select',
+        hideClass: 'dn'
+    });
+&lt;/script&gt;
+</code></pre>
+
+<ul>
+<li>The <code>selector</code> represents the attribute that will attach the plugin to the element.</li>
+<li>The <code>type_attribute</code> represents the attribute that will store the type of the event required.</li>
+<li>The <code>hideClass</code> is used to specify the class name that has <code>display</code> set to <code>none</code> as it will be used to show and hide certain elements.</li>
+</ul>
+
+<pre><code>.dn {
+    display: none;
+}
+</code></pre>
+
+<p>You're now ready to apply it to your <code>select</code> elements</p>
+
+<h3>
+<a id="make-ajax-call-and-redirect-call-redirect" class="anchor" href="#make-ajax-call-and-redirect-call-redirect" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make ajax call and redirect <code>call-redirect</code>
+</h3>
+
+<pre><code>&lt;select data-ssd-select="call-redirect"&gt;
+    &lt;option value="/"&gt;Select one&lt;/option&gt;
+    &lt;option value="./calls/redirect.json"&gt;First&lt;/option&gt;
+    &lt;option value="./calls/redirect.json"&gt;Second&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+
+<p>Ajax call should return the response in the following format:</p>
+
+<pre><code>{
+  "redirect": "http://ssdtutorials.com"
+}
+</code></pre>
+
+<h3>
+<a id="make-ajax-call-and-reload-the-page-call-reload" class="anchor" href="#make-ajax-call-and-reload-the-page-call-reload" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make ajax call and reload the page <code>call-reload</code>
+</h3>
+
+<pre><code>&lt;select data-ssd-select="call-reload"&gt;
+    &lt;option value="/"&gt;Select one&lt;/option&gt;
+    &lt;option value="./calls/reload.json"&gt;First&lt;/option&gt;
+    &lt;option value="./calls/reload.json"&gt;Second&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+
+<p>No response needed for this call.</p>
+
+<h3>
+<a id="make-ajax-call-and-replace-content-call-replace" class="anchor" href="#make-ajax-call-and-replace-content-call-replace" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make ajax call and replace content <code>call-replace</code>
+</h3>
+
+<pre><code>&lt;select data-ssd-select="call-replace"&gt;
+    &lt;option value="/"&gt;Select one&lt;/option&gt;
+    &lt;option value="./calls/replace.json"&gt;Replace&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;div class="first-replacement"&gt;First&lt;/div&gt;
+&lt;div class="second-replacement"&gt;Second&lt;/div&gt;
+</code></pre>
+
+<p>Ajax call should return the response in the following format:</p>
+
+<pre><code>{
+  "replace": {
+    ".first-replacement": "First replacement",
+    ".second-replacement": "Second replacement"
+  }
+}
+</code></pre>
+
+<h3>
+<a id="make-ajax-call-and-replace-elements-call-replace-with" class="anchor" href="#make-ajax-call-and-replace-elements-call-replace-with" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make ajax call and replace elements <code>call-replace-with</code>
+</h3>
+
+<p>
+    Select one
+    Replace
+</p>
+
+<div>First</div>
+
+<div>Second</div>
+
+<p>Ajax call should return the response in the following format:</p>
+
+<pre><code>{
+  "replace": {
+    ".first-replacement-with": "&lt;p&gt;First replacement with&lt;/p&gt;",
+    ".second-replacement-with": "&lt;p&gt;Second replacement with&lt;/p&gt;"
+  }
+}
+</code></pre>
+
+<h3>
+<a id="navigate-to-go-to" class="anchor" href="#navigate-to-go-to" aria-hidden="true"><span class="octicon octicon-link"></span></a>Navigate to <code>go-to</code>
+</h3>
+
+<pre><code>&lt;select data-ssd-select="go-to"&gt;
+    &lt;option value="/"&gt;Select one&lt;/option&gt;
+    &lt;option value="./calls/go-to-1.html"&gt;First&lt;/option&gt;
+    &lt;option value="./calls/go-to-2.html"&gt;Second&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+
+<h3>
+<a id="show-selected-and-hide-others-show-hide" class="anchor" href="#show-selected-and-hide-others-show-hide" aria-hidden="true"><span class="octicon octicon-link"></span></a>Show selected and hide others <code>show-hide</code>
+</h3>
+
+<pre><code>&lt;select data-ssd-select="show-hide"&gt;
+    &lt;option value="/"&gt;Select one&lt;/option&gt;
+    &lt;option value="#" data-target=".first"&gt;First&lt;/option&gt;
+    &lt;option value="#" data-target=".second"&gt;Second&lt;/option&gt;
+    &lt;option value="#"&gt;Third&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;div class="first"&gt;First&lt;/div&gt;
+&lt;div class="second dn"&gt;Second&lt;/div&gt;
+</code></pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/sebastiansulinski/ssd-select">Ssd-select</a> is maintained by <a href="https://github.com/sebastiansulinski">sebastiansulinski</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
