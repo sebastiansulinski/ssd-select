@@ -24,5 +24,8 @@
   "homepage": "https://github.com/sebastiansulinski/ssd-select#readme",
   "dependencies": {
     "jquery": "^2.1.4"
+  },
+  "devDependencies": {
+    "foundation-sites": "^6.0.6"
   }
 }

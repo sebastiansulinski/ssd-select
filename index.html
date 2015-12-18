@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>ssd-select</title>
+    <link href="./node_modules/foundation-sites/dist/foundation.min.css" rel="stylesheet" type="text/css">
     <style>
+        body {
+            padding: 2rem 0;
+        }
         .dn {
             display: none;
         }
@@ -12,69 +16,94 @@
 <body>
 
 
+<div class="row">
 
+    <div class="column">
 
-<select data-ssd-select="call-redirect">
-    <option value="/">Select one</option>
-    <option value="./calls/redirect.json">First</option>
-    <option value="./calls/redirect.json">Second</option>
-</select>
+        <section class="primary callout">
 
+            <h5>Make ajax call and redirect <kbd>call-redirect</kbd></h5>
 
+            <select data-ssd-select="call-redirect">
+                <option value="/">Select one</option>
+                <option value="./calls/redirect.json">First</option>
+                <option value="./calls/redirect.json">Second</option>
+            </select>
 
+        </section>
 
+        <section class="primary callout">
 
-<select data-ssd-select="call-reload">
-    <option value="/">Select one</option>
-    <option value="./calls/reload.json">First</option>
-    <option value="./calls/reload.json">Second</option>
-</select>
+            <h5>Make ajax call and reload the page <kbd>call-reload</kbd></h5>
 
+            <select data-ssd-select="call-reload">
+                <option value="/">Select one</option>
+                <option value="./calls/reload.json">First</option>
+                <option value="./calls/reload.json">Second</option>
+            </select>
 
-<select data-ssd-select="call-replace">
-    <option value="/">Select one</option>
-    <option value="./calls/replace.json">Replace</option>
-</select>
+        </section>
 
-<div class="first-replacement">First</div>
-<div class="second-replacement">Second</div>
+        <section class="primary callout">
 
+            <h5>Make ajax call and replace content <kbd>call-replace</kbd></h5>
 
+            <select data-ssd-select="call-replace">
+                <option value="/">Select one</option>
+                <option value="./calls/replace.json">Replace</option>
+            </select>
 
+            <div class="first-replacement">First</div>
+            <div class="second-replacement">Second</div>
 
-<select data-ssd-select="call-replace-with">
-    <option value="/">Select one</option>
-    <option value="./calls/replace-with.json">Replace</option>
-</select>
+        </section>
 
-<div class="first-replacement-with">First</div>
-<div class="second-replacement-with">Second</div>
+        <section class="primary callout">
 
+            <h5>Make ajax call and replace elements <kbd>call-replace-with</kbd></h5>
 
+            <select data-ssd-select="call-replace-with">
+                <option value="/">Select one</option>
+                <option value="./calls/replace-with.json">Replace</option>
+            </select>
 
-<select data-ssd-select="go-to">
-    <option value="/">Select one</option>
-    <option value="./calls/go-to.html">First</option>
-    <option value="./calls/go-to.html">Second</option>
-</select>
+            <div class="first-replacement-with">First</div>
+            <div class="second-replacement-with">Second</div>
 
+        </section>
 
+        <section class="primary callout">
 
+            <h5>Navigate to <kbd>go-to</kbd></h5>
 
+            <select data-ssd-select="go-to">
+                <option value="/">Select one</option>
+                <option value="./calls/go-to.html">First</option>
+                <option value="./calls/go-to.html">Second</option>
+            </select>
 
-<select data-ssd-select="show-hide">
-    <option value="/">Select one</option>
-    <option value="#" data-target=".first">First</option>
-    <option value="#" data-target=".second">Second</option>
-    <option value="#">Third</option>
-</select>
+        </section>
 
-<div class="first">First</div>
-<div class="second dn">Second</div>
+        <section class="primary callout">
 
+            <h5>Show selected and hide others <kbd>show-hide</kbd></h5>
 
+            <select data-ssd-select="show-hide">
+                <option value="/">Select one</option>
+                <option value="#" data-target=".first">First</option>
+                <option value="#" data-target=".second">Second</option>
+                <option value="#" data-target=".third">Third</option>
+            </select>
 
+            <div class="first">First</div>
+            <div class="second dn">Second</div>
+            <div class="third dn">Second</div>
 
+        </section>
+
+    </div>
+
+</div>
 
 <script src="./node_modules/jquery/dist/jquery.min.js"></script>
 <script src="./src/jquery.ssd-select.min.js"></script>

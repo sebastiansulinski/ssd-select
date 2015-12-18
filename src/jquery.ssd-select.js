@@ -13,6 +13,8 @@
         "use strict";
 
         var settings = $.extend({
+            selector : '[data-ssd-select]',
+            type_attribute : 'data-ssd-select',
             hideClass : 'dn'
         }, options);
 
@@ -142,13 +144,13 @@
 
         }
 
-        return $('[data-ssd-select]').each(function() {
+        return $(settings.selector).each(function() {
 
             "use strict";
 
             $(this).on('change', function() {
 
-                var type = $(this).data('ssd-select');
+                var type = $(this).attr(settings.type_attribute);
 
                 switch(type) {
 
