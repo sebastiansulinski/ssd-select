@@ -1,0 +1,6 @@
+{
+  "replace": {
+    ".first-replacement-with": "<p>First replacement with</p>",
+    ".second-replacement-with": "<p>Second replacement with</p>"
+  }
+}

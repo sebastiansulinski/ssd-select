@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ssd-select</title>
+    <style>
+        .dn {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+<select data-ssd-select="call-redirect">
+    <option value="/">Select one</option>
+    <option value="./calls/redirect.json">First</option>
+    <option value="./calls/redirect.json">Second</option>
+</select>
+
+
+
+
+
+<select data-ssd-select="call-reload">
+    <option value="/">Select one</option>
+    <option value="./calls/reload.json">First</option>
+    <option value="./calls/reload.json">Second</option>
+</select>
+
+
+
+
+
+<select data-ssd-select="go-to">
+    <option value="/">Select one</option>
+    <option value="./calls/go-to.html">First</option>
+    <option value="./calls/go-to.html">Second</option>
+</select>
+
+
+
+
+
+<select data-ssd-select="show-hide">
+    <option value="/">Select one</option>
+    <option value="#" data-target=".first">First</option>
+    <option value="#" data-target=".second">Second</option>
+    <option value="#">Third</option>
+</select>
+
+<div class="first">First</div>
+<div class="second dn">Second</div>
+
+
+
+
+<select data-ssd-select="call-replace">
+    <option value="/">Select one</option>
+    <option value="./calls/replace.json">Replace</option>
+</select>
+
+<div class="first-replacement">First</div>
+<div class="second-replacement">Second</div>
+
+
+
+
+<select data-ssd-select="call-replace-with">
+    <option value="/">Select one</option>
+    <option value="./calls/replace-with.json">Replace</option>
+</select>
+
+<div class="first-replacement-with">First</div>
+<div class="second-replacement-with">Second</div>
+
+
+
+
+
+<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+<script src="./src/jquery.ssd-select.js"></script>
+<script>
+    $.fn.ssdSelect({
+        hideClass: 'dn'
+    });
+</script>
+</body>
+</html>
