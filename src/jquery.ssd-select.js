@@ -14,7 +14,7 @@
 
         var settings = $.extend({
             selector : '[data-ssd-select]',
-            type_attribute : 'data-ssd-select',
+            action_attribute : 'data-ssd-select',
             hideClass : 'dn'
         }, options);
 
@@ -39,23 +39,35 @@
 
         }
 
+        function redirect(data) {
+
+            "use strict";
+
+            if ( ! data.redirect) {
+                return false;
+            }
+
+            window.location.href = data.redirect;
+
+        }
+
         function callRedirect(obj) {
 
             "use strict";
 
             call(
                 obj.val(),
-                function(data, textStatus, jqXHR) {
-
-                    if ( ! data.redirect) {
-                        return false;
-                    }
-
-                    window.location.href = data.redirect;
-
-                },
+                redirect,
                 error
             )
+
+        }
+
+        function reload() {
+
+            "use strict";
+
+            window.location.reload(true);
 
         }
 
@@ -65,11 +77,25 @@
 
             call(
                 obj.val(),
-                function() {
-                    window.location.reload(true);
-                },
+                reload,
                 error
             )
+
+        }
+
+        function replace(data) {
+
+            "use strict";
+
+            if ( ! data.replace) {
+                return false;
+            }
+
+            $.each(data.replace, function(k, v) {
+
+                $(k).html(v);
+
+            });
 
         }
 
@@ -79,21 +105,25 @@
 
             call(
                 obj.val(),
-                function(data, textStatus, jqXHR) {
-
-                    if ( ! data.replace) {
-                        return false;
-                    }
-
-                    $.each(data.replace, function(k, v) {
-
-                        $(k).html(v);
-
-                    });
-
-                },
+                replace,
                 error
             )
+
+        }
+
+        function replaceWith(data) {
+
+            "use strict";
+
+            if ( ! data.replace) {
+                return false;
+            }
+
+            $.each(data.replace, function(k, v) {
+
+                $(k).replaceWith(v);
+
+            });
 
         }
 
@@ -103,17 +133,46 @@
 
             call(
                 obj.val(),
-                function(data, textStatus, jqXHR) {
+                replaceWith,
+                error
+            )
 
-                    if ( ! data.replace) {
+        }
+
+        function callAction(obj) {
+
+            "use strict";
+
+            call(
+                obj.val(),
+                function(data) {
+
+                    if ( ! data.action) {
                         return false;
                     }
 
-                    $.each(data.replace, function(k, v) {
+                    switch(data.action) {
 
-                        $(k).replaceWith(v);
+                        case 'redirect':
+                            redirect(data);
+                            break;
 
-                    });
+                        case 'reload':
+                            reload();
+                            break;
+
+                        case 'replace':
+                            replace(data);
+                            break;
+
+                        case 'replace-with':
+                            replaceWith(data);
+                            break;
+
+                        default:
+                            throw new Error('Invalid method');
+
+                    }
 
                 },
                 error
@@ -150,9 +209,9 @@
 
             $(this).on('change', function() {
 
-                var type = $(this).attr(settings.type_attribute);
+                var action = $(this).attr(settings.action_attribute);
 
-                switch(type) {
+                switch(action) {
 
                     case 'call-redirect':
                         callRedirect($(this));
@@ -168,6 +227,10 @@
 
                     case 'call-replace-with':
                         callReplaceWith($(this));
+                        break;
+
+                    case 'call-action':
+                        callAction($(this));
                         break;
 
                     case 'go-to':

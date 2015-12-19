@@ -1,0 +1,7 @@
+{
+  "action": "replace-with",
+  "replace": {
+    ".action-third-replacement-with": "<div>Third replacement with</div>",
+    ".action-fourth-replacement-with": "<div>Fourth replacement with</div>"
+  }
+}

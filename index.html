@@ -74,6 +74,26 @@
 
         <section class="primary callout">
 
+            <h5>Make ajax call and perform action returned with the response <kbd>call-action</kbd></h5>
+
+            <select data-ssd-select="call-action">
+                <option value="/">Select one</option>
+                <option value="./calls/action-redirect.json">Redirect</option>
+                <option value="./calls/action-reload.json">Reload</option>
+                <option value="./calls/action-replace.json">Replace</option>
+                <option value="./calls/action-replace-with.json">Replace with</option>
+            </select>
+
+            <div class="action-first-replacement">First</div>
+            <div class="action-second-replacement">Second</div>
+
+            <div class="action-third-replacement-with">Third</div>
+            <div class="action-fourth-replacement-with">Fourth</div>
+
+        </section>
+
+        <section class="primary callout">
+
             <h5>Navigate to <kbd>go-to</kbd></h5>
 
             <select data-ssd-select="go-to">
@@ -106,7 +126,7 @@
 </div>
 
 <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-<script src="./src/jquery.ssd-select.min.js"></script>
+<script src="./src/jquery.ssd-select.js"></script>
 <script>
     $.fn.ssdSelect({
         hideClass: 'dn'

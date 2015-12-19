@@ -1,0 +1,7 @@
+{
+  "action": "replace",
+  "replace": {
+    ".action-first-replacement": "First replacement",
+    ".action-second-replacement": "Second replacement"
+  }
+}

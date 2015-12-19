@@ -11,14 +11,14 @@ First include all resources and call the plugin
 <script>
     $.fn.ssdSelect({
         selector : '[data-ssd-select]',
-        type_attribute : 'data-ssd-select',
+        action_attribute : 'data-ssd-select',
         hideClass: 'dn'
     });
 </script>
 ```
 
 - The `selector` represents the attribute that will attach the plugin to the element.
-- The `type_attribute` represents the attribute that will store the type of the event required.
+- The `action_attribute` represents the attribute that will store the type of the action required.
 - The `hideClass` is used to specify the class name that has `display` set to `none` as it will be used to show and hide certain elements.
 
 ```
@@ -103,6 +103,34 @@ Ajax call should return the response in the following format:
 }
 ```
 
+### Make ajax call and perform action returned with the response `call-action`
+
+```
+<select data-ssd-select="call-action">
+    <option value="/">Select one</option>
+    <option value="./calls/action-redirect.json">Redirect</option>
+    <option value="./calls/action-reload.json">Reload</option>
+    <option value="./calls/action-replace.json">Replace</option>
+    <option value="./calls/action-replace-with.json">Replace with</option>
+</select>
+
+<div class="action-first-replacement">First</div>
+<div class="action-second-replacement">Second</div>
+
+<div class="action-third-replacement-with">Third</div>
+<div class="action-fourth-replacement-with">Fourth</div>
+```
+
+Ajax call should return the response as it would for any of the relevant actions plus the index `action` to indicate the desired action i.e.
+
+```
+{
+  "action": "redirect",
+  "redirect": "http://ssdtutorials.com"
+}
+```
+
+
 ### Navigate to `go-to`
 
 ```
@@ -120,9 +148,10 @@ Ajax call should return the response in the following format:
     <option value="/">Select one</option>
     <option value="#" data-target=".first">First</option>
     <option value="#" data-target=".second">Second</option>
-    <option value="#">Third</option>
+    <option value="#" data-target=".third">Third</option>
 </select>
 
 <div class="first">First</div>
 <div class="second dn">Second</div>
+<div class="third dn">Second</div>
 ```
