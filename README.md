@@ -153,5 +153,5 @@ Ajax call should return the response as it would for any of the relevant actions
 
 <div class="first">First</div>
 <div class="second dn">Second</div>
-<div class="third dn">Second</div>
+<div class="third dn">Third</div>
 ```
