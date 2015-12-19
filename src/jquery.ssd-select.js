@@ -2,7 +2,7 @@
  * ssdSelect jQuery plugin
  * Examples and documentation at: https://github.com/sebastiansulinski/ssd-select
  * Copyright (c) 2015 Sebastian Sulinski
- * Version: 1.0.0 (18-DEC-2015)
+ * Version: 1.2.0 (19-DEC-2015)
  * Licensed under the MIT.
  * Requires: jQuery v1.9 or later
  */
@@ -15,7 +15,7 @@
         var settings = $.extend({
             selector : '[data-ssd-select]',
             action_attribute : 'data-ssd-select',
-            hideClass : 'dn'
+            hide_class : 'dn'
         }, options);
 
 
@@ -196,10 +196,10 @@
                 siblings = obj.find('option').not(':selected');
 
             $.each(siblings, function() {
-                $($(this).data('target')).addClass(settings.hideClass);
+                $($(this).data('target')).addClass(settings.hide_class);
             });
 
-            $(selected.data('target')).removeClass(settings.hideClass);
+            $(selected.data('target')).removeClass(settings.hide_class);
 
         }
 

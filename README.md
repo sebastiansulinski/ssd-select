@@ -12,14 +12,14 @@ First include all resources and call the plugin
     $.fn.ssdSelect({
         selector : '[data-ssd-select]',
         action_attribute : 'data-ssd-select',
-        hideClass: 'dn'
+        hide_class: 'dn'
     });
 </script>
 ```
 
 - The `selector` represents the attribute that will attach the plugin to the element.
 - The `action_attribute` represents the attribute that will store the type of the action required.
-- The `hideClass` is used to specify the class name that has `display` set to `none` as it will be used to show and hide certain elements.
+- The `hide_class` is used to specify the class name that has `display` set to `none` as it will be used to show and hide certain elements.
 
 ```
 .dn {
