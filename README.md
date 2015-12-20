@@ -1,6 +1,8 @@
 # SSD Select
 jQuery plugin to handle most common events associated with the form 'select' tag.
 
+[See demo](http://ssd-select.ssdtutorials.com/)
+
 ## Usage instructions
 
 First include all resources and call the plugin
