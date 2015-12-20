@@ -1,19 +1,20 @@
 /*
  * ssdSelect jQuery plugin
- * Examples and documentation at: https://github.com/sebastiansulinski/ssd-select
- * Copyright (c) 2015 Sebastian Sulinski
- * Version: 1.2.0 (19-DEC-2015)
+ * Examples: http://ssd-select.ssdtutorials.com
+ * Documentation: https://github.com/sebastiansulinski/ssd-select
+ * Copyright (c) 2015 Sebastian Sulinski <info@ssdtutorials.com>
+ * Version: 1.3.0 (20-DEC-2015)
  * Licensed under the MIT.
  * Requires: jQuery v1.9 or later
  */
-(function(window, $) {
+(function(window, $, undefined) {
 
     $.fn.ssdSelect = function(options) {
 
         "use strict";
 
         var settings = $.extend({
-            selector : '[data-ssd-select]',
+            action : undefined,
             action_attribute : 'data-ssd-select',
             hide_class : 'dn'
         }, options);
@@ -203,13 +204,13 @@
 
         }
 
-        return $(settings.selector).each(function() {
+        return this.each(function() {
 
             "use strict";
 
             $(this).on('change', function() {
 
-                var action = $(this).attr(settings.action_attribute);
+                var action = settings.action !== undefined ? settings.action : $(this).attr(settings.action_attribute);
 
                 switch(action) {
 

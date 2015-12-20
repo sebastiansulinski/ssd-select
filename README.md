@@ -8,17 +8,43 @@ First include all resources and call the plugin
 ```
 <script src="./node_modules/jquery/dist/jquery.min.js"></script>
 <script src="./node_modules/ssd-select/src/jquery.ssd-select.min.js"></script>
+```
+
+### Instantiating the plugin
+
+To instantiate the plugin you have two options.
+You strictly specify what action you want to bind to a given element
+
+```
 <script>
-    $.fn.ssdSelect({
-        selector : '[data-ssd-select]',
-        action_attribute : 'data-ssd-select',
-        hide_class: 'dn'
+    $('[data-ssd-select]').fn.ssdSelect({
+        action : 'call-redirect'
     });
 </script>
 ```
 
-- The `selector` represents the attribute that will attach the plugin to the element.
-- The `action_attribute` represents the attribute that will store the type of the action required.
+or you can tell it to dynamically obtain it from a specific attribute of that element (default is `data-ssd-select`)
+
+```
+<script>
+    $('[data-ssd-select]').fn.ssdSelect({
+        action_attribute : 'data-ssd-select'
+    });
+</script>
+```
+
+Additionally, you need to provide the name of the css class that will hide elements from the view (default is `dn`)
+
+```
+<script>
+    $('[data-ssd-select]').fn.ssdSelect({
+        hide_class : 'dn'
+    });
+</script>
+```
+
+- The `action` allows you to specify a single action to be used on the select object.
+- The `action_attribute` represents the attribute that will store the type of the action required for a given select object.
 - The `hide_class` is used to specify the class name that has `display` set to `none` as it will be used to show and hide certain elements.
 
 ```
@@ -27,9 +53,11 @@ First include all resources and call the plugin
 }
 ```
 
+### Available actions
+
 You're now ready to apply it to your `select` elements
 
-### Make ajax call and redirect `call-redirect`
+#### Make ajax call and redirect `call-redirect`
 
 ```
 <select data-ssd-select="call-redirect">
@@ -47,7 +75,7 @@ Ajax call should return the response in the following format:
 }
 ```
 
-### Make ajax call and reload the page `call-reload`
+#### Make ajax call and reload the page `call-reload`
 
 ```
 <select data-ssd-select="call-reload">
@@ -59,7 +87,7 @@ Ajax call should return the response in the following format:
 
 No response needed for this call.
 
-### Make ajax call and replace content `call-replace`
+#### Make ajax call and replace content `call-replace`
 
 ```
 <select data-ssd-select="call-replace">
@@ -82,7 +110,7 @@ Ajax call should return the response in the following format:
 }
 ```
 
-### Make ajax call and replace elements `call-replace-with`
+#### Make ajax call and replace elements `call-replace-with`
 
 <select data-ssd-select="call-replace-with">
     <option value="/">Select one</option>
@@ -103,7 +131,7 @@ Ajax call should return the response in the following format:
 }
 ```
 
-### Make ajax call and perform action returned with the response `call-action`
+#### Make ajax call and perform action returned with the response `call-action`
 
 ```
 <select data-ssd-select="call-action">
@@ -131,7 +159,7 @@ Ajax call should return the response as it would for any of the relevant actions
 ```
 
 
-### Navigate to `go-to`
+#### Navigate to `go-to`
 
 ```
 <select data-ssd-select="go-to">
@@ -141,7 +169,7 @@ Ajax call should return the response as it would for any of the relevant actions
 </select>
 ```
 
-### Show selected and hide others `show-hide`
+#### Show selected and hide others `show-hide`
 
 ```
 <select data-ssd-select="show-hide">
