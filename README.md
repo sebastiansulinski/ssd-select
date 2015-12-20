@@ -17,7 +17,7 @@ You strictly specify what action you want to bind to a given element
 
 ```
 <script>
-    $('[data-ssd-select]').fn.ssdSelect({
+    $('[data-ssd-select]').ssdSelect({
         action : 'call-redirect'
     });
 </script>
@@ -27,7 +27,7 @@ or you can tell it to dynamically obtain it from a specific attribute of that el
 
 ```
 <script>
-    $('[data-ssd-select]').fn.ssdSelect({
+    $('[data-ssd-select]').ssdSelect({
         action_attribute : 'data-ssd-select'
     });
 </script>
@@ -37,7 +37,7 @@ Additionally, you need to provide the name of the css class that will hide eleme
 
 ```
 <script>
-    $('[data-ssd-select]').fn.ssdSelect({
+    $('[data-ssd-select]').ssdSelect({
         hide_class : 'dn'
     });
 </script>
