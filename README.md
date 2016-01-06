@@ -3,6 +3,14 @@ jQuery plugin to handle most common events associated with the form 'select' tag
 
 [See demo](http://ssd-select.ssdtutorials.com/)
 
+## Installation
+
+You can install this plugin via `npm`:
+
+```
+npm install ssd-select
+```
+
 ## Usage instructions
 
 First include all resources and call the plugin
