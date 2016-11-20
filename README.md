@@ -53,9 +53,20 @@ Additionally, you need to provide the name of the css class that will hide eleme
 </script>
 ```
 
+If the value is store in a different attribute then the default `value`, you can use the `value_attribute` property.
+
+```
+<script>
+    $('[data-ssd-select]').ssdSelect({
+        value_attribute : 'data-value'
+    });
+</script>
+```
+
 - The `action` allows you to specify a single action to be used on the select object.
 - The `action_attribute` represents the attribute that will store the type of the action required for a given select object.
 - The `hide_class` is used to specify the class name that has `display` set to `none` as it will be used to show and hide certain elements.
+- The `value_attribute` allows you to specify which attribute of the `option` tag should be used instead of a default `value`
 
 ```
 .dn {
