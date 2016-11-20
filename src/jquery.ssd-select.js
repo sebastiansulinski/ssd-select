@@ -3,7 +3,7 @@
  * Examples: http://ssd-select.ssdtutorials.com
  * Documentation: https://github.com/sebastiansulinski/ssd-select
  * Copyright (c) 2015 Sebastian Sulinski <info@ssdtutorials.com>
- * Version: 1.3.0 (20-DEC-2015)
+ * Version: 2.0.1 (20-NOV-2016)
  * Licensed under the MIT.
  * Requires: jQuery v1.9 or later
  */
@@ -16,7 +16,8 @@
         var settings = $.extend({
             action : undefined,
             action_attribute : 'data-ssd-select',
-            hide_class : 'dn'
+            hide_class : 'dn',
+            value_attribute : 'value'
         }, options);
 
 
@@ -52,12 +53,12 @@
 
         }
 
-        function callRedirect(obj) {
+        function callRedirect(value) {
 
             "use strict";
 
             call(
-                obj.val(),
+                value,
                 redirect,
                 error
             )
@@ -72,12 +73,12 @@
 
         }
 
-        function callReload(obj) {
+        function callReload(value) {
 
             "use strict";
 
             call(
-                obj.val(),
+                value,
                 reload,
                 error
             )
@@ -100,12 +101,12 @@
 
         }
 
-        function callReplace(obj) {
+        function callReplace(value) {
 
             "use strict";
 
             call(
-                obj.val(),
+                value,
                 replace,
                 error
             )
@@ -128,12 +129,12 @@
 
         }
 
-        function callReplaceWith(obj) {
+        function callReplaceWith(value) {
 
             "use strict";
 
             call(
-                obj.val(),
+                value,
                 replaceWith,
                 error
             )
@@ -181,11 +182,11 @@
 
         }
 
-        function goTo(obj) {
+        function goTo(value) {
 
             "use strict";
 
-            window.location.href = obj.val();
+            window.location.href = value;
 
         }
 
@@ -210,36 +211,37 @@
 
             $(this).on('change', function() {
 
-                var action = settings.action !== undefined ? settings.action : $(this).attr(settings.action_attribute);
+                var action = settings.action !== undefined ? settings.action : $(this).attr(settings.action_attribute),
+                    value = settings.value_attribute === 'value' ? $(this).val() : $('option:selected', this).attr(settings.value_attribute);
 
                 switch(action) {
 
                     case 'call-redirect':
-                        callRedirect($(this));
+                        callRedirect(value);
                         break;
 
                     case 'call-reload':
-                        callReload($(this));
+                        callReload(value);
                         break;
 
                     case 'call-replace':
-                        callReplace($(this));
+                        callReplace(value);
                         break;
 
                     case 'call-replace-with':
-                        callReplaceWith($(this));
+                        callReplaceWith(value);
                         break;
 
                     case 'call-action':
-                        callAction($(this));
+                        callAction(value);
                         break;
 
                     case 'go-to':
-                        goTo($(this));
+                        goTo(value);
                         break;
 
                     case 'show-hide':
-                        showHide($(this));
+                        showHide(value);
                         break;
 
                     default:

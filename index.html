@@ -100,10 +100,18 @@
 
             <h5>Navigate to <kbd>go-to</kbd></h5>
 
-            <select data-ssd-select="go-to">
+            <label for="go_to_value">With `value` attribute</label>
+            <select id="go_to_value" data-ssd-select="go-to">
                 <option value="/">Select one</option>
                 <option value="./calls/go-to.html">First</option>
                 <option value="./calls/go-to.html">Second</option>
+            </select>
+
+            <label for="go_to_data">With `data` attribute</label>
+            <select id="go_to_data" data-ssd-select-go-to-data>
+                <option value="/" data-value="/">Select one</option>
+                <option value="./calls/go-to.html" data-value="./calls/go-to.html">First</option>
+                <option value="./calls/go-to.html" data-value="./calls/go-to.html">Second</option>
             </select>
 
         </section>
@@ -134,6 +142,10 @@
 <script>
     $('[data-ssd-select]').ssdSelect({
         hide_class: 'dn'
+    });
+    $('[data-ssd-select-go-to-data]').ssdSelect({
+        action: 'go-to',
+        value_attribute: 'data-value'
     });
 </script>
 </body>
