@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>ssd-select</title>
-    <link href="./node_modules/foundation-sites/dist/foundation.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.6/foundation.min.css" rel="stylesheet" type="text/css">
     <style>
         body {
             padding: 2rem 0;
@@ -120,7 +120,7 @@
 
             <h5>Show selected and hide others <kbd>show-hide</kbd></h5>
 
-            <select data-ssd-select="show-hide">
+            <select data-ssd-select-data-target>
                 <option value="/">Select one</option>
                 <option value="#" data-target=".first">First</option>
                 <option value="#" data-target=".second">Second</option>
@@ -137,11 +137,14 @@
 
 </div>
 
-<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="./src/jquery.ssd-select.js"></script>
 <script>
-    $('[data-ssd-select]').ssdSelect({
-        hide_class: 'dn'
+    $('[data-ssd-select]').ssdSelect();
+    $('[data-ssd-select-data-target]').ssdSelect({
+        hide_class: 'dn',
+        action: 'show-hide',
+        value_attribute: 'data-target'
     });
     $('[data-ssd-select-go-to-data]').ssdSelect({
         action: 'go-to',

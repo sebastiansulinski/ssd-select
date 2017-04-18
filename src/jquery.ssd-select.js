@@ -2,12 +2,26 @@
  * ssdSelect jQuery plugin
  * Examples: http://ssd-select.ssdtutorials.com
  * Documentation: https://github.com/sebastiansulinski/ssd-select
- * Copyright (c) 2015 Sebastian Sulinski <info@ssdtutorials.com>
- * Version: 2.0.1 (20-NOV-2016)
+ * Copyright (c) 2017 Sebastian Sulinski <info@ssdtutorials.com>
+ * Version: 2.1.0 (18-APR-2017)
  * Licensed under the MIT.
  * Requires: jQuery v1.9 or later
  */
-(function(window, $, undefined) {
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module unless amdModuleId is set
+        define(['jquery'], function (a0) {
+            return (factory(a0));
+        });
+    } else if (typeof exports === 'object') {
+        // Node. Does not work with strict CommonJS, but
+        // only CommonJS-like environments that support module.exports,
+        // like Node.
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(root["jQuery"]);
+    }
+}(this, function ($, undefined) {
 
     $.fn.ssdSelect = function(options) {
 
@@ -141,12 +155,12 @@
 
         }
 
-        function callAction(obj) {
+        function callAction(value) {
 
             "use strict";
 
             call(
-                obj.val(),
+                value,
                 function(data) {
 
                     if ( ! data.action) {
@@ -211,8 +225,9 @@
 
             $(this).on('change', function() {
 
-                var action = settings.action !== undefined ? settings.action : $(this).attr(settings.action_attribute),
-                    value = settings.value_attribute === 'value' ? $(this).val() : $('option:selected', this).attr(settings.value_attribute);
+                var instance = $(this),
+                    action = settings.action !== undefined ? settings.action : instance.attr(settings.action_attribute),
+                    value = settings.value_attribute === 'value' ? instance.val() : $('option:selected', this).attr(settings.value_attribute);
 
                 switch(action) {
 
@@ -241,7 +256,7 @@
                         break;
 
                     case 'show-hide':
-                        showHide(value);
+                        showHide(instance);
                         break;
 
                     default:
@@ -255,4 +270,4 @@
 
     }
 
-})(window, window.jQuery);
+}));
