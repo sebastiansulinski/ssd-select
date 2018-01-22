@@ -1,6 +1,6 @@
 {
   "name": "ssd-select",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "jQuery plugin to handle most common events associated with the form 'select' tag.",
   "main": "src/jquery.ssd-select.js",
   "scripts": {
